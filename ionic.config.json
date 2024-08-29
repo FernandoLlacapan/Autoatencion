@@ -1,0 +1,7 @@
+{
+  "name": "Autoatencion",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
