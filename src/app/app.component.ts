@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -7,30 +7,12 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public menus = [
-    {
-      category: "Líquidos",
-      items: [
-        { name: "Bebida 500 ml", price: 1290,image: "assets/images/Bebida_500ml.png" },
-        { name: "Don Limon", price: 1350 },
-        { name: "Jugo en Caja", price: 500 },
-        // Otros productos...
-      ]
-    },
-    {
-      category: "Lácteos",
-      items: [
-        { name: "Leche sin lactosa", price: 950 },
-        { name: "Leche en Caja", price: 890 },
-        { name: "Yogurt Variedades", price: 2350 }
-      ]
-    },
-    // Otras categorías...
-  ];
+  constructor(private menu: MenuController) {}
 
-  constructor(private navCtrl: NavController) {}
-
-  openCategory(category: string) {
-    this.navCtrl.navigateForward(`/category/${category}`);
+  selectCategory(category: string) {
+    // Implementa la lógica para mostrar los productos según la categoría
+    console.log('Seleccionada categoría:', category);
+    // Cierra el menú después de seleccionar una categoría
+    this.menu.close();
   }
 }

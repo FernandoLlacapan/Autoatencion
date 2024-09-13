@@ -1,0 +1,41 @@
+ion-content {
+    --background: white;
+  }
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .logo1 {
+    width: 200px;
+    height: 80px;
+    margin: 10px;
+  }
+  .logo2 {
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+  }
+  
+  .login-item {
+    --background: #FFA500;  /* Color naranjo */
+    border-radius: 10px;
+    margin: 10px;
+    width: 90%;
+  }
+  
+  .login-button {
+    --background: #cd7305;  /* Naranjo más oscuro */
+    width: 150px;
+    margin-top: 20px;
+    border-radius: 10px;
+    /* Letras en blanco, Comic Sans */
+    color: white;
+    font-family: 'Arial';
+    font-size: 18px;
+    cursor: pointer;
+  }
+  

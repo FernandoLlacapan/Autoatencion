@@ -1,0 +1,38 @@
+ion-content {
+    --background: #f5f5f5; // Fondo gris claro para la página
+  }
+  
+  ion-header {
+    background-color: #ffffff; // Fondo blanco para el header
+    border-bottom: 1px solid #ccc; // Línea de separación en la parte inferior del header
+  }
+  ion-list {
+    margin: 0;
+    padding: 0;
+  }
+  
+  ion-item {
+    background-color: #ffffff; // Fondo blanco para los items
+    border-radius: 8px; // Bordes redondeados para los items
+    margin: 10px 0; // Espacio entre los items
+    padding: 15px; // Espacio interno para los items
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); // Sombra ligera para los items
+  }
+  
+  ion-item ion-label {
+    color: #333; // Color de texto para los labels
+  }
+  
+  ion-item h2 {
+    font-size: 16px; // Tamaño de fuente para el nombre del producto
+    margin: 0;
+  }
+  
+  ion-item p {
+    font-size: 14px; // Tamaño de fuente para el precio del producto
+    color: #666; // Color de texto para el precio
+  }
+  ion-back-button {
+    --color: #ff5722; // Color del icono de regreso
+  }
+      

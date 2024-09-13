@@ -1,0 +1,15 @@
+ion-item {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .quantity {
+    display: flex;
+    align-items: center;
+  }
+  
+  ion-thumbnail img {
+    max-width: 80px;
+    max-height: 80px;
+  }
+  

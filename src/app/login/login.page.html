@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Iniciar Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" style="background-color: white;">
+  <div class="login-container">
+    <!-- Logo de la app -->
+    <img src="assets/images/logo1.png" alt="logo1" class="logo1">
+    <img src="assets/images/logo2.png" alt="logo2" class="logo2">
+
+    <!-- Formulario de Login -->
+    <ion-item class="login-item">
+      <ion-label position="floating">Nombre de Usuario</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item class="login-item">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <!-- Botón Iniciar Sesión -->
+    <ion-button expand="full" color="primary" (click)="validateLogin()" class ="login-button">Iniciar</ion-button>
+  </div>
+</ion-content>

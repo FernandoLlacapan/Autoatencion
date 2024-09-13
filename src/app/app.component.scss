@@ -1,0 +1,20 @@
+ion-menu {
+    --background: #ffffff; /* Fondo del menú lateral */
+  }
+  
+  ion-list ion-item {
+    --background: #e0e0e0; /* Color de los botones de categoría (gris) */
+    --color: #000000;      /* Color del texto */
+    margin: 10px 0;        /* Espacio entre botones */
+    border-radius: 8px;    /* Botones con bordes redondeados */
+  }
+  
+  ion-content {
+    --background: #ffffff; /* Fondo blanco para el contenido principal */
+  }
+  
+  ion-header {
+    --background: #ffffff; /* Fondo blanco del header */
+    --color: #000000;      /* Color del título en el header */
+  }
+  

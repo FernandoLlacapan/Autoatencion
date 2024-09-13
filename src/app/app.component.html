@@ -1,19 +1,21 @@
-<ion-app>
-  <ion-menu side="start" menuId="first" contentId="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>AutoAtencion</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-button *ngFor="let menu of menus" (click)="openCategory(menu.category)">
-          {{ menu.category }}
-        </ion-button>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+<ion-menu side="start" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Categorías</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item button (click)="selectCategory('Lácteos')">Lácteos</ion-item>
+      <ion-item button (click)="selectCategory('Líquidos')">Líquidos</ion-item>
+      <ion-item button (click)="selectCategory('Masas Dulces')">Masas Dulces</ion-item>
+      <ion-item button (click)="selectCategory('Masas Saladas')">Masas Saladas</ion-item>
+      <ion-item button (click)="selectCategory('Sandwich y Promociones')">Sandwich y Promociones</ion-item>
+      <ion-item button (click)="selectCategory('Café y Promociones')">Café y Promociones</ion-item>
+      <ion-item button (click)="selectCategory('Hotdogs y Promociones')">Hotdogs y Promociones</ion-item>
+      <ion-item button (click)="selectCategory('Promociones Fritas')">Promociones Fritas</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-  <ion-router-outlet id="main-content"></ion-router-outlet>
-</ion-app>
-
+<ion-router-outlet id="main-content"></ion-router-outlet>
