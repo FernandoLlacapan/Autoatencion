@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
 
 import { CartPageRoutingModule } from './cart-routing.module';
-
-import { CartPage } from './cart.page';
+import { CartPage } from './cart.page';  // Asegúrate de que la ruta es correcta
 
 @NgModule({
   imports: [
@@ -15,6 +13,6 @@ import { CartPage } from './cart.page';
     IonicModule,
     CartPageRoutingModule
   ],
-  declarations: [CartPage]
+  declarations: [CartPage]  // Asegúrate de que está declarado como componente
 })
 export class CartPageModule {}

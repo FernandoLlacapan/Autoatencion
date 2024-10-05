@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Café</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let product of products">
+      <ion-thumbnail slot="start">
+        <img [src]="product.image">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ product.name }}</h2>
+        <p>${{ product.price }}</p>
+      </ion-label>
+
+      <div class="quantity-controls"> <!-- Contenedor para los controles de cantidad -->
+        <ion-button (click)="decrementQuantity(product)" fill="outline">-</ion-button>
+        <ion-input type="number" [(ngModel)]="product.quantity" readonly></ion-input>
+        <ion-button (click)="incrementQuantity(product)" fill="outline">+</ion-button>
+      </div>
+
+      <ion-button (click)="addToCart(product)" expand="full">Agregar al carrito</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+

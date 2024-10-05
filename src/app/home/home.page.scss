@@ -46,4 +46,16 @@ ion-menu ion-item {
   --border-color: #ddd;
 }
 
+.logo-container {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center;    /* Centrar verticalmente */
+  height: 100%;           /* Tomar el 100% de la altura del contenido */
+}
 
+.logo-img {
+  max-width: 200px;        /* Ajustar el tamaño máximo del logo */
+  max-height: 200px;       /* Ajustar el tamaño máximo del logo */
+  width: 100%;
+  height: auto;
+}
