@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 
 interface Product {
   name: string;
@@ -25,7 +26,7 @@ export class HotdogsPage implements OnInit {
     { name: '2 Hotdog solo + bebida Mini', price: 3990, image: 'assets/images/hotdog/2-hotdog-solo-bebida.jpg', quantity: 0 }
   ];
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit() {
   }
@@ -40,5 +41,10 @@ export class HotdogsPage implements OnInit {
       product.quantity -= 1;
     }
   }
-
+  addToCart(product: Product) {
+    if (product.quantity > 0) {
+      this.cartService.addToCart(product);
+    }
+  }
 }
+

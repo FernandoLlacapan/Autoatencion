@@ -1,0 +1,48 @@
+// Definimos variables de color
+$color-white: #ffffff;
+$color-orange: #ff8c00; // Naranja brillante
+$color-black: #000000; // Color negro
+
+ion-header {
+  background-color: $color-orange; // Fondo naranja para el header
+  color: $color-white; // Texto blanco en el header
+
+  ion-toolbar {
+    --background: $color-orange; // Fondo del toolbar
+    --color: $color-white; // Color del texto
+  }
+}
+
+ion-content {
+  background-color: $color-white; // Fondo blanco para el contenido
+  padding: 10px; // Agrega un poco de espacio alrededor
+  max-width: 320px; // Límite de ancho máximo
+  margin: 0 auto; // Centrar el contenido en la pantalla
+
+  ion-list {
+    ion-item {
+      border: 1px solid $color-orange; // Borde del item
+      margin-bottom: 10px; // Espacio entre items
+      border-radius: 8px; // Bordes redondeados
+      background-color: $color-white; // Fondo blanco para el item
+
+      // Ajustes a los botones
+      ion-button {
+        background-color: $color-orange; // Fondo de los botones
+        color: $color-black; // Color del texto en botones
+        margin-left: 5px; // Espacio a la izquierda de los botones
+
+        &:hover {
+          background-color: darken($color-orange, 10%); // Oscurece el fondo en hover
+        }
+      }
+
+      // Ajustes a ion-input
+      ion-input {
+        width: 50px; // Ancho fijo para el input de cantidad
+        margin: 0 10px; // Espacio a los lados del input
+        text-align: center; // Centrar texto dentro del input
+      }
+    }
+  }
+}

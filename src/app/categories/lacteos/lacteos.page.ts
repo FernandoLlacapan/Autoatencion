@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 
 interface Product {
   name: string;
@@ -21,10 +22,10 @@ export class LacteosPage implements OnInit {
     { name: 'Yogurt Variedades', price: 2350, image: 'assets/images/lacteos/yogurt-variedades.jpg', quantity: 0 }
   ];
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
-
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   incrementQuantity(product: Product) {
 
@@ -34,6 +35,11 @@ export class LacteosPage implements OnInit {
   decrementQuantity(product: Product) {
     if (product.quantity > 0) {
       product.quantity -= 1;
+    }
+  }
+  addToCart(product: Product) {
+    if (product.quantity > 0) {
+      this.cartService.addToCart(product);
     }
   }
 }

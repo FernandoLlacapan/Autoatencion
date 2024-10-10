@@ -1,0 +1,33 @@
+ion-content {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .error-message {
+    background-color: #ffcccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #ff6666;
+  
+    h2 {
+      color: #e60000;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      color: #990000;
+    }
+  }
+  
+  ion-button {
+    --background: #ff9900; /* Color de fondo naranjo */
+    --color: #000000; /* Color del texto en negro */
+    width: 90%;
+    max-width: 300px;
+  }
+  
