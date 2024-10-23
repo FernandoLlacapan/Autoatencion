@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { authGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: 'protected', // Ruta protegida
-    canActivate: [authGuard], // Usamos el AuthGuard para proteger la ruta
-    loadChildren: () => import('./protected/protected.module').then(m => m.ProtectedPageModule)
-  },
   {
     path: '',
     redirectTo: 'login',
@@ -19,43 +14,53 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'lacteos',
-    loadChildren: () => import('./categories/lacteos/lacteos.module').then(m => m.LacteosPageModule)
+    loadChildren: () => import('./categories/lacteos/lacteos.module').then(m => m.LacteosPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'liquidos',
-    loadChildren: () => import('./categories/liquidos/liquidos.module').then(m => m.LiquidosPageModule)
+    loadChildren: () => import('./categories/liquidos/liquidos.module').then(m => m.LiquidosPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'masas-dulces',
-    loadChildren: () => import('./categories/masas-dulces/masas-dulces.module').then(m => m.MasasDulcesPageModule)
+    loadChildren: () => import('./categories/masas-dulces/masas-dulces.module').then(m => m.MasasDulcesPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'masas-saladas',
-    loadChildren: () => import('./categories/masas-saladas/masas-saladas.module').then(m => m.MasasSaladasPageModule)
+    loadChildren: () => import('./categories/masas-saladas/masas-saladas.module').then(m => m.MasasSaladasPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'sandwich',
-    loadChildren: () => import('./categories/sandwich/sandwich.module').then(m => m.SandwichPageModule)
+    loadChildren: () => import('./categories/sandwich/sandwich.module').then(m => m.SandwichPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'cafe',
-    loadChildren: () => import('./categories/cafe/cafe.module').then(m => m.CafePageModule)
+    loadChildren: () => import('./categories/cafe/cafe.module').then(m => m.CafePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'hotdogs',
-    loadChildren: () => import('./categories/hotdogs/hotdogs.module').then(m => m.HotdogsPageModule)
+    loadChildren: () => import('./categories/hotdogs/hotdogs.module').then(m => m.HotdogsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'promociones-fritas',
-    loadChildren: () => import('./categories/promociones-fritas/promociones-fritas.module').then(m => m.PromocionesFritasPageModule)
+    loadChildren: () => import('./categories/promociones-fritas/promociones-fritas.module').then(m => m.PromocionesFritasPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'cart',
-    loadChildren: () => import('./cart/cart.module').then(m => m.CartPageModule)
+    loadChildren: () => import('./cart/cart.module').then(m => m.CartPageModule),
+    canActivate: [AuthGuard]
   },
 
 ];

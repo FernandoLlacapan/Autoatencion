@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-interface Product {
-  name: string;
-  price: number;
-}
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -12,42 +7,35 @@ interface Product {
   styleUrls: ['./products.page.scss'],
 })
 export class ProductsPage implements OnInit {
-  selectedCategory: string | undefined;
-  products: Product[] = [];
+  products: any[] = [];
 
-  menus = [
-    {
-      category: 'Líquidos',
-      items: [
-        { name: 'Bebida 500 ml', price: 1290 },
-        { name: 'Don Limon', price: 1350 },
-        { name: 'Jugo en Caja', price: 500 },
-        { name: 'Arizona', price: 2290 },
-        // Otros productos...
-      ]
-    },
-    {
-      category: 'Lácteos',
-      items: [
-        { name: 'Leche sin lactosa', price: 950 },
-        { name: 'Leche en Caja', price: 890 },
-        { name: 'Yogurt Variedades', price: 2350 }
-      ]
-    },
-    // Agrega las demás categorías...
-  ];
-
-  constructor(private route: ActivatedRoute) { }
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    // Obtener la categoría seleccionada desde la ruta
-this.selectedCategory = this.route.snapshot.paramMap.get('category') || '';
-    
-    // Buscar los productos de la categoría seleccionada
-    const categoryData = this.menus.find(menu => menu.category === this.selectedCategory);
-    
-    if (categoryData) {
-      this.products = categoryData.items;
-    }
+    this.loadProducts();
+  }
+
+  loadProducts() {
+    this.productService.getAllProducts().subscribe(data => {
+      this.products = data;
+    });
+  }
+
+  addProduct(product: any) {
+    this.productService.addProduct(product).then(() => {
+      console.log('Producto agregado con éxito');
+    });
+  }
+
+  updateProduct(key: string, product: any) {
+    this.productService.updateProduct(key, product).then(() => {
+      console.log('Producto actualizado con éxito');
+    });
+  }
+
+  deleteProduct(key: string) {
+    this.productService.deleteProduct(key).then(() => {
+      console.log('Producto eliminado con éxito');
+    });
   }
 }

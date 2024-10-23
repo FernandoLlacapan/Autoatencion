@@ -1,9 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ selectedCategory }}</ion-title>
-    <ion-buttons slot="end">
-      <ion-back-button defaultHref="/home"></ion-back-button>
-    </ion-buttons>
+    <ion-title>Productos</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,8 +9,12 @@
     <ion-item *ngFor="let product of products">
       <ion-label>
         <h2>{{ product.name }}</h2>
-        <p>\${{ product.price }}</p>
+        <p>${{ product.price }}</p>
       </ion-label>
+      <ion-button (click)="updateProduct(product.key, product)">Editar</ion-button>
+      <ion-button color="danger" (click)="deleteProduct(product.key)">Eliminar</ion-button>
     </ion-item>
   </ion-list>
+
+  <ion-button expand="block" (click)="addProduct(newProduct)">Agregar Producto</ion-button>
 </ion-content>
