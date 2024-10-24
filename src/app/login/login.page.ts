@@ -16,7 +16,7 @@ export class LoginPage {
   // Método para validar el login
   validateLogin() {
     // Aquí puedes añadir tu lógica de validación. Por simplicidad, simularemos la validación:
-    if (this.username === 'usuario' && this.password === '1234') {
+    if (this.username === 'pab.castro@duocuc.cl' && this.password === 'Fer05022001') {
       // Redirige al Home si el login es exitoso
       this.router.navigate(['/home']);
     } else {
