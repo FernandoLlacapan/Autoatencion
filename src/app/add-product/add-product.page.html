@@ -1,0 +1,16 @@
+<form [formGroup]="productForm" (ngSubmit)="addProduct()">
+  <ion-item>
+    <ion-label>Nombre</ion-label>
+    <ion-input formControlName="name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Precio</ion-label>
+    <ion-input type="number" formControlName="price"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Cantidad</ion-label>
+    <ion-input type="number" formControlName="quantity"></ion-input>
+  </ion-item>
+  <ion-button (click)="capturePhoto()">Sacar Foto</ion-button>
+  <ion-button type="submit">Agregar Producto</ion-button>
+</form>

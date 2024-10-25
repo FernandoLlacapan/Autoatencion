@@ -1,37 +1,27 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
+  private products = []; // Aquí guardas tus productos
 
-  private dbPath = '/products';  // Ruta a la colección de productos
+  constructor() {}
 
-  constructor(private db: AngularFireDatabase) { }
-
-  // Obtener todos los productos
-  getAllProducts() {
-    return this.db.list(this.dbPath).snapshotChanges().pipe(
-      map(changes => 
-        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      )
-    );
+  addProduct(name: string, price: number, photo: string, quantity: number, categoryId: string) {
+    const newProduct = {
+      id: this.generateId(), // función para generar un ID único
+      name,
+      price,
+      photo,
+      quantity,
+      categoryId,
+    };
+    this.products.push(newProduct);
+    return newProduct;
   }
 
-  // Agregar un nuevo producto
-  addProduct(product: any) {
-    return this.db.list(this.dbPath).push(product);
-  }
-
-  // Actualizar un producto
-  updateProduct(key: string, product: any) {
-    return this.db.list(this.dbPath).update(key, product);
-  }
-
-  // Eliminar un producto
-  deleteProduct(key: string) {
-    return this.db.list(this.dbPath).remove(key);
+  private generateId() {
+    return Math.random().toString(36).substring(2, 15); // Método simple para generar un ID
   }
 }

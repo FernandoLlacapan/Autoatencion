@@ -11,6 +11,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,7 +21,8 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),  // Inicializar Firebase
     AngularFireAuthModule,  // Módulo para usar Firebase Authentication (Autenticación y registro)
-    AngularFireDatabaseModule  // Módulo para usar Firebase Database
+    AngularFireDatabaseModule,  // Módulo para usar Firebase Database
+    ReactiveFormsModule  // Módulo para usar Reactive Forms (formularios)
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
