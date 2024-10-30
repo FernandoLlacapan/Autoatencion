@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProductService } from '../services/product.service';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-add-product',
@@ -8,26 +8,23 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./add-product.page.scss'],
 })
 export class AddProductPage {
-  productForm!: FormGroup;
+  product = { name: '', price: 0, photo: '', quantity: 0, categoryId: '' };
+  photo: string | null = null;
 
-  constructor(private formBuilder: FormBuilder, private productService: ProductService) {
-    this.productForm = this.formBuilder.group({
-      name: [''],
-      price: [''],
-      photo: [''], // Aquí puedes vincular la foto si es necesario
-      quantity: [''],
-      categoryId: [''], // Asume que tienes una lista de categorías
+  constructor(private productService: ProductService) {}
+
+  async capturePhoto() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      resultType: CameraResultType.Base64,
+      source: CameraSource.Camera,
     });
+    this.product.photo = `data:image/jpeg;base64,${image.base64String}`;
   }
 
   addProduct() {
-    const { name, price, photo, quantity, categoryId } = this.productForm.value;
+    const { name, price, photo, quantity, categoryId } = this.product;
     this.productService.addProduct(name, price, photo, quantity, categoryId);
-    // Lógica adicional como navegación o mensajes de éxito
   }
-
-  capturePhoto() {
-    // Llama a la función de captura de foto
-  }
+  
 }
-

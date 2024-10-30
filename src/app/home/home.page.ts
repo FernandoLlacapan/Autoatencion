@@ -1,40 +1,38 @@
-import { Component } from '@angular/core';
-import { CartService } from '../services/cart.service';
-
-interface Product {
-  name: string;
-  price: number;
-  image: string;
-  quantity: number;
-}
+import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
 })
-export class HomePage {
-  products: Product[] = []; // Los productos para mostrar en la página
-  selectedCategory: string = ''; // La categoría seleccionada
+export class HomePage implements OnInit {
+  categories = [
+    { name: 'Lácteos', route: '/lacteos' },
+    { name: 'Líquidos', route: '/liquidos' },
+    { name: 'Masas Dulces', route: '/masas-dulces' },
+    { name: 'Masas Saladas', route: '/masas-saladas' },
+    { name: 'Sándwich', route: '/sandwich' },
+    { name: 'Café', route: '/cafe' },
+    { name: 'Hotdogs', route: '/hotdogs' },
+    { name: 'Promociones Fritas', route: '/promociones-fritas' },
+  ];
 
-  constructor(private cartService: CartService) {}
+  constructor(private navCtrl: NavController) {}
 
-  // Método para agregar productos al carrito
-  addToCart(product: Product) {
-    if (product.quantity > 0) {
-      this.cartService.addToCart(product);
-    }
+  ngOnInit() {}
+
+  navigateToCategory(route: string) {
+    this.navCtrl.navigateForward(route);
   }
 
-  // Método para incrementar la cantidad de un producto
-  incrementQuantity(product: Product) {
-    product.quantity += 1;
+  goToAddProduct() {
+    this.navCtrl.navigateForward('/add-product');
   }
 
-  // Método para decrementar la cantidad de un producto
-  decrementQuantity(product: Product) {
-    if (product.quantity > 0) {
-      product.quantity -= 1;
-    }
+  goToCart() {
+    this.navCtrl.navigateForward('/cart');
   }
+
+  
 }

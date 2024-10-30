@@ -4,28 +4,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" style="background-color: white;">
-  <div class="login-container">
-    <!-- Logo de la app -->
-    <img src="assets/images/logo1.png" alt="logo1" class="logo1">
-    <img src="assets/images/logo2.png" alt="logo2" class="logo2">
-
-    <!-- Formulario de Login -->
-    <ion-item class="login-item">
-      <ion-label position="floating">Correo de Usuario</ion-label>
-      <ion-input formControlName="email" type="text"></ion-input>
+<ion-content class="ion-padding">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
     </ion-item>
-
-    <ion-item class="login-item">
+    <ion-item>
       <ion-label position="floating">Contraseña</ion-label>
       <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
-
-    <!-- Botón Iniciar Sesión -->
-    <ion-button expand="full" color="primary" (click)="onLogin()" class ="login-button">Iniciar</ion-button>
-
-    <!-- Botón para ir a la página de registro -->
-    <ion-button expand="full" routerLink="/register" color="tertiary">Crear una cuenta</ion-button>
-
-  </div>
+    <ion-button expand="full" type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</ion-button>
+  </form>
+  <ion-button expand="full" color="secondary" (click)="goToRegister()">Crear Cuenta</ion-button>
+  <ion-text color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-text>
 </ion-content>

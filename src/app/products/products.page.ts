@@ -1,41 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../services/product.service';
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore'; // Si usas Firestore
+import { Observable } from 'rxjs';
 
-@Component({
-  selector: 'app-products',
-  templateUrl: './products.page.html',
-  styleUrls: ['./products.page.scss'],
+interface Product {
+  key?: string;
+  name: string;
+  price: number;
+  photo: string;
+  quantity: number;
+  categoryId: string;
+}
+
+@Injectable({
+  providedIn: 'root'
 })
-export class ProductsPage implements OnInit {
-  products: any[] = [];
+export class ProductService {
+  private collectionName = 'products';
 
-  constructor(private productService: ProductService) {}
+  constructor(private firestore: AngularFirestore) {}
 
-  ngOnInit() {
-    this.loadProducts();
+  getAllProducts(): Observable<Product[]> {
+    return this.firestore.collection<Product>(this.collectionName).valueChanges({ idField: 'key' });
   }
 
-  loadProducts() {
-    this.productService.getAllProducts().subscribe(data => {
-      this.products = data;
-    });
+  addProduct(product: Product) {
+    return this.firestore.collection(this.collectionName).add(product);
   }
 
-  addProduct(product: any) {
-    this.productService.addProduct(product).then(() => {
-      console.log('Producto agregado con éxito');
-    });
-  }
-
-  updateProduct(key: string, product: any) {
-    this.productService.updateProduct(key, product).then(() => {
-      console.log('Producto actualizado con éxito');
-    });
+  updateProduct(key: string, product: Product) {
+    return this.firestore.collection(this.collectionName).doc(key).update(product);
   }
 
   deleteProduct(key: string) {
-    this.productService.deleteProduct(key).then(() => {
-      console.log('Producto eliminado con éxito');
-    });
+    return this.firestore.collection(this.collectionName).doc(key).delete();
   }
 }

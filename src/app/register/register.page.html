@@ -1,33 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Regístrate</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="onRegister()">
-        <ion-icon name="person-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    <ion-title>Registrarse</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form [formGroup] = "registerForm" (ngSubmit)="onRegister()">
-
+<ion-content class="ion-padding">
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
     <ion-item>
-      <ion-label position="floating">Email</ion-label>
+      <ion-label position="floating">Correo</ion-label>
       <ion-input formControlName="email" type="email"></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label position="floating">Contraseña</ion-label>
       <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">Confirmar Contraseña</ion-label>
-        <ion-input formControlName="confirmPassword" type="password"></ion-input>
-      </ion-item>
-
-    <ion-button expand="full" color="primary" type="submit" [disabled]="registerForm"></ion-button>
-
+    <ion-item>
+      <ion-label position="floating">Confirmar Contraseña</ion-label>
+      <ion-input formControlName="confirmPassword" type="password"></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">Registrar Cuenta</ion-button>
   </form>
+  <ion-button expand="full" color="secondary" (click)="navCtrl.navigateBack('/login')">Volver a Iniciar Sesión</ion-button>
+  <ion-text color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-text>
 </ion-content>

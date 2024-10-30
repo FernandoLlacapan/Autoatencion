@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CartService } from '../services/cart.service';
+import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 
 interface Product {
   name: string;
@@ -13,15 +13,16 @@ interface Product {
   templateUrl: './cart.page.html',
   styleUrls: ['./cart.page.scss'],
 })
-export class CartPage {
-  cartItems: Product[] = [];  // Definir correctamente el tipo como Product[]
+export class CartPage implements OnInit {
+  cartProducts: Product[] = [];
   total: number = 0;
+  navCtrl: any;
 
   constructor(private cartService: CartService) {}
 
-  ionViewWillEnter() {
-    this.cartService.cart$.subscribe((products: Product[]) => {
-      this.cartItems = products;  // Ahora `products` tiene el tipo correcto
+  ngOnInit() {
+    this.cartService.cart$.subscribe(products => {
+      this.cartProducts = products;
       this.total = this.cartService.getTotal();
     });
   }
@@ -29,8 +30,8 @@ export class CartPage {
   removeFromCart(product: Product) {
     this.cartService.removeFromCart(product);
   }
-
-  clearCart() {
-    this.cartService.clearCart();
+  proceedToPayment() {
+    this.navCtrl.navigateForward('/payment');
   }
+  
 }
