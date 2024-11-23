@@ -1,27 +1,28 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  
-  login(email: string, password: string): Promise<any> {
-    return this.afAuth.signInWithEmailAndPassword(email, password);
-  }
-  register(email: string, password: string): Promise<any> {
-    return this.afAuth.createUserWithEmailAndPassword(email, password);
-  }
-  
-  constructor(private afAuth: AngularFireAuth) {}
+  afAuth: any;
+  constructor() {}
 
-  // Método para verificar si el usuario está autenticado
-  isLoggedIn(): Observable<boolean> {
-    return this.afAuth.authState.pipe(map(user => !!user)); // Retorna true si hay un usuario autenticado
+  // Método para devolver un saludo
+  getGreeting(): string {
+    return 'Hello';
   }
 
-  getGretting(): string {
-    return "Hello";
+  async login(email: string, password: string): Promise<boolean> {
+    // Lógica de inicio de sesión simulada
+    return true;
+  }
+
+  // Método para registrar un usuario
+  async register(email: string, password: string): Promise<void> {
+    try {
+      await this.afAuth.createUserWithEmailAndPassword(email, password);
+    } catch (error) {
+      throw error;
+    }
   }
 }
