@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
@@ -12,5 +11,10 @@ describe('AuthService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should contain "Hello" in return of getGretting', () => {
+    const gretting = service.getGretting();
+    expect(gretting).toBe('Hello');
   });
 });

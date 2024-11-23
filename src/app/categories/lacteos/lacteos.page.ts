@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { NavController } from '@ionic/angular';
 
 interface Product {
   name: string;
@@ -22,7 +23,7 @@ export class LacteosPage implements OnInit {
     { name: 'Yogurt Variedades', price: 2350, image: 'assets/images/lacteos/yogurt-variedades.jpg', quantity: 0 }
   ];
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private navCtrl: NavController) { }
 
   ngOnInit() {
   }
@@ -41,5 +42,9 @@ export class LacteosPage implements OnInit {
     if (product.quantity > 0) {
       this.cartService.addToCart(product);
     }
+  }
+
+  goToHome() {
+    this.navCtrl.navigateBack('/home');
   }
 }

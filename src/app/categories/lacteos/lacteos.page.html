@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Lácteos</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goToHome()">
+        <ion-icon name="arrow-back-outline"></ion-icon> Volver
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +20,7 @@
         <p>${{ product.price }}</p>
       </ion-label>
 
-      <div class="quantity-controls"> <!-- Contenedor para los controles de cantidad -->
+      <div class="quantity-controls">
         <ion-button (click)="decrementQuantity(product)" fill="outline">-</ion-button>
         <ion-input type="number" [(ngModel)]="product.quantity" readonly></ion-input>
         <ion-button (click)="incrementQuantity(product)" fill="outline">+</ion-button>

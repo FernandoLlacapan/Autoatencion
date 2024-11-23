@@ -21,5 +21,7 @@ export class AuthService {
     return this.afAuth.authState.pipe(map(user => !!user)); // Retorna true si hay un usuario autenticado
   }
 
-  // Otros métodos de autenticación...
+  getGretting(): string {
+    return "Hello";
+  }
 }
