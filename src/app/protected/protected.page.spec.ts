@@ -14,4 +14,5 @@ describe('ProtectedPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });

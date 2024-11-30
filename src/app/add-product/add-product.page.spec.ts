@@ -14,4 +14,9 @@ describe('AddProductPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display a form for adding products', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('form')).toBeTruthy();
+  });
 });

@@ -26,4 +26,9 @@ describe('LoginPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a login button', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('ion-button').textContent).toContain('Iniciar Sesión');
+  });
 });

@@ -14,4 +14,10 @@ describe('PaymentPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  it('should have a payment button', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('ion-button').textContent).toContain('Confirmar Pago');
+  });
+  
 });

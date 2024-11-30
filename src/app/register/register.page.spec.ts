@@ -26,4 +26,10 @@ describe('RegisterPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a register button', () => {
+    const compiled = fixture.nativeElement;
+    const registerButton = compiled.querySelector('ion-button[type="submit"]');
+    expect(registerButton.textContent).toContain('Registrar Cuenta'); // Ajusta el texto esperado
+  });
 });

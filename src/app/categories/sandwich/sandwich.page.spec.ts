@@ -14,4 +14,10 @@ describe('SandwichPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a title "Sandwiches"', () => {
+    const compiled = fixture.nativeElement;
+    const title = compiled.querySelector('ion-title').textContent;
+    expect(title).toContain('Sandwiches');
+  });
 });

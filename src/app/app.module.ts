@@ -13,13 +13,13 @@ import { environment } from '../environments/environment';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),  // Inicializar Firebase
     AngularFireAuthModule,  // Módulo para usar Firebase Authentication (Autenticación y registro)
     AngularFireDatabaseModule,  // Módulo para usar Firebase Database
     ReactiveFormsModule  // Módulo para usar Reactive Forms (formularios)
