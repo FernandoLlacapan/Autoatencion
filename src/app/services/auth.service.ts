@@ -4,12 +4,18 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
+  private currentUserEmail: string = 'pab.castro@duocuc.cl'; // Simulación de usuario autenticado
   afAuth: any;
   constructor() {}
 
   // Método para devolver un saludo
   getGreeting(): string {
     return 'Hello';
+  }
+
+  // Devuelve el correo del usuario autenticado
+  getCurrentUserEmail(): string {
+    return this.currentUserEmail;
   }
 
   async login(email: string, password: string): Promise<boolean> {

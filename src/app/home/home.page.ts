@@ -18,9 +18,20 @@ export class HomePage implements OnInit {
     { name: 'Promociones Fritas', route: '/promociones-fritas' },
   ];
 
+  userEmail: string = ''; // Correo del usuario autenticado
+  authService: any;
+
   constructor(private navCtrl: NavController) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // Obtener el correo del usuario autenticado
+    this.userEmail = this.authService.getCurrentUserEmail();
+  }
+
+  isAdmin(): boolean {
+    // Verifica si el correo pertenece al administrador
+    return this.userEmail === 'pab.castro@duocuc.cl';
+  }
 
   navigateToCategory(route: string) {
     this.navCtrl.navigateForward(route);
