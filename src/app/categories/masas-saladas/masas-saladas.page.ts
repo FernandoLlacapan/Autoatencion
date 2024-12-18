@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
+import { NavController } from '@ionic/angular';
 
 interface Product {
   name: string;
@@ -24,7 +26,7 @@ export class MasasSaladasPage implements OnInit {
     { name: 'Empanada Pino + Bebida Mini', price: 2950, image: 'assets/images/masas-saladas/empanada-pino-bebida.jpg', quantity: 0}
   ];
 
-  constructor() { }
+  constructor(private cartService: CartService, private navCtrl: NavController) { }
 
   ngOnInit() {
   }
@@ -38,6 +40,15 @@ export class MasasSaladasPage implements OnInit {
     if (product.quantity > 0) {
       product.quantity -= 1;
     }
+  }
+  addToCart(product: Product) {
+    if (product.quantity > 0) {
+      this.cartService.addToCart(product);
+    }
+  }
+
+  goToHome() {
+    this.navCtrl.navigateBack('/home');
   }
 
 }

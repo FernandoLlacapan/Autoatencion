@@ -5,26 +5,24 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-list *ngIf="cartItems.length > 0">
-    <ion-item *ngFor="let product of cartItems">
+  <ion-list>
+    <ion-item *ngFor="let product of cartProducts">
       <ion-thumbnail slot="start">
-        <img [src]="product.image">
+        <img [src]="product.image" alt="{{ product.name }}">
       </ion-thumbnail>
       <ion-label>
         <h2>{{ product.name }}</h2>
-        <p>{{ product.price | currency: 'USD' }}</p>
+        <p>Precio: ${{ product.price }} x {{ product.quantity }}</p>
+        <p>Total: ${{ product.price * product.quantity }}</p>
       </ion-label>
-      <ion-button fill="clear" (click)="removeFromCart(product)">Eliminar</ion-button>
+      <ion-button color="danger" (click)="removeFromCart(product)">Eliminar</ion-button>
     </ion-item>
   </ion-list>
-
-  <!-- Mostrar el total -->
-  <ion-item lines="none">
-    <ion-label>Total:</ion-label>
-    <ion-note slot="end">{{ total | currency: 'USD' }}</ion-note>
+  <ion-item>
+    <ion-label>Total del Carrito</ion-label>
+    <ion-note slot="end">${{ total }}</ion-note>
   </ion-item>
+  <ion-button expand="full" color="success" (click)="proceedToPayment()">Pagar</ion-button>
 
-  <!-- Botones para limpiar el carrito o realizar la compra -->
-  <ion-button expand="block" color="danger" (click)="clearCart()">Limpiar Carrito</ion-button>
-  <ion-button expand="block" color="primary">Proceder al Pago</ion-button>
+  
 </ion-content>

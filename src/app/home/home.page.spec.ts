@@ -21,4 +21,11 @@ describe('HomePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display a welcome message', () => {
+    const compiled = fixture.nativeElement;
+    const message = compiled.querySelector('h1').textContent;
+    expect(message).toContain('Bienvenido a la aplicación');
+  });
+  
 });

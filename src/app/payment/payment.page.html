@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Confirmar Pago</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label>Total a Pagar</ion-label>
+    <ion-note slot="end">${{ total }}</ion-note>
+  </ion-item>
+  <ion-button expand="full" color="success" (click)="confirmPayment()">Confirmar Pago</ion-button>
+</ion-content>

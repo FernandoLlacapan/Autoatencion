@@ -1,27 +1,48 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Importa el Router
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
+  loginForm!: FormGroup;
+  errorMessage: string = '';
 
-  username: string = '';
-  password: string = '';
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private navCtrl: NavController
+  ) {}
 
-  constructor(private router: Router) {}
+  ngOnInit() {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
 
-  // Método para validar el login
-  validateLogin() {
-    // Aquí puedes añadir tu lógica de validación. Por simplicidad, simularemos la validación:
-    if (this.username === 'usuario' && this.password === '1234') {
-      // Redirige al Home si el login es exitoso
-      this.router.navigate(['/home']);
-    } else {
-      alert('Usuario o contraseña incorrecta');
+  async onLogin() {
+    const { email, password } = this.loginForm.value;
+    try {
+      await this.authService.login(email, password);
+      this.navCtrl.navigateForward('/home'); // Redirige a la página principal tras inicio de sesión exitoso
+    } catch (error: any) {
+      if (error.code === 'auth/user-not-found') {
+        this.errorMessage = 'Usuario no encontrado. Verifica el correo.';
+      } else if (error.code === 'auth/wrong-password') {
+        this.errorMessage = 'Contraseña incorrecta. Inténtalo de nuevo.';
+      } else {
+        this.errorMessage = 'Error al iniciar sesión. Verifica tus credenciales.';
+      }
     }
   }
-}
+  
 
+  goToRegister() {
+    this.navCtrl.navigateForward('/register');
+  }
+}
